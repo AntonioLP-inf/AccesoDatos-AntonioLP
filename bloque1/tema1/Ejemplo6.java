@@ -12,7 +12,7 @@ public class Ejemplo6 {
             // Lee un byte del archivo en la posición actual del puntero
             System.out.println("Posicion antes de leer: " + file.getFilePointer());//escribe 5
 
-            int unbyte = file.read();
+            int unbyte = file.read();// Lee un byte del archivo en la posición actual del puntero
             System.out.println("Puntero despues de leer:"+ file.getFilePointer());//escribe 6
             // Convierte el byte leído a un carácter y lo imprime en la consola
             System.out.println((char)unbyte);
