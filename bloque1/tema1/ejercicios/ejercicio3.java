@@ -1,6 +1,11 @@
 package bloque1.tema1.ejercicios;
 
 import java.io.*;
+import java.util.Scanner;
+import java.util.Random;
+import java.util.RandomAccess;
+
+
 
 public class ejercicio3 {
     /*
@@ -21,25 +26,28 @@ public class ejercicio3 {
         try {
             // Escribir el abecedario en el fichero mediante FileWriter
             FileWriter escritor = new FileWriter("./Bloque1/tema1/ejercicios/datos.txt");
-            for (char c = 'A'; c <= 'Z'; c++) {
-                escritor.write(c);
-            }
+            String abecedario = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            escritor.write(abecedario);
             escritor.close();
-            
-            // Pedir al usuario una posición y un carácter
-            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-            System.out.print("Ingrese la posición (0-25) donde desea modificar: ");
-            int posicion = Integer.parseInt(reader.readLine());
-            System.out.print("Ingrese el carácter que desea escribir: ");
-            char nuevoCaracter = (char) reader.read();
+            // Pedir al usuario una posición y un carácter para modificar
+            Scanner sc = new Scanner(System.in);
+            // Pedir al usuario una posición (entero) del archivo donde quiere modificar.
+            System.out.print("Indica la posicion: ");
+            int pos = Integer.parseInt(sc.nextLine());
+            // Pedir al usuario el carácter que quiere escribir en esa posición.
+            System.out.print("Indica el caracter: ");
+            char caracter = sc.nextLine().charAt(0); // Tomamos el primer carácter de la línea ingresada
+            // Usar RandomAccessFile para posicionarse en esa posición y sobrescribir el contenido.
+            RandomAccessFile random = new RandomAccessFile("./Bloque1/tema1/ejercicios/datos.txt", "rw");
+            // Posicionarse en la posición indicada
+            random.seek(pos);
+            // Sobrescribir el contenido con el nuevo carácter
+            random.writeChar(caracter);
+            // Cerrar el archivo correctamente
+            random.close();
 
-            // Usar RandomAccessFile para modificar el contenido
-            RandomAccessFile file = new RandomAccessFile("./Bloque1/tema1/ejercicios/datos.txt", "rw");
-            file.seek(posicion);
-            file.write(nuevoCaracter);
-            file.close();
-
-            System.out.println("Modificación completada.");
+            System.out.println("Modificación completada correctamente.");
+            sc.close();
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
