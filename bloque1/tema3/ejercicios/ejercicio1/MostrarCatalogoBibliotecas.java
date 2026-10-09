@@ -7,7 +7,7 @@ public class MostrarCatalogoBibliotecas {
     public static void main(String[] args) {
         try {
             // 1. Cargar y parsear el fichero XML
-            File archivoXML = new File("fichero.xml");
+            File archivoXML = new File("C:\\Users\\PC117\\Desktop\\Acceso a datos\\AccesoDatos-AntonioLP\\bloque1\\tema3\\ejercicios\\ejercicio1\\catalogo.xml");
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(archivoXML);
