@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coleccion>
+    <ejercito faccion="Space Marines">
+        <nombre>Capítulo Ultramarines</nombre>
+        <unidad>
+            <nombreUnidad>Escuadra Intercessor</nombreUnidad>
+            <tipo>Infantería</tipo>
+            <puntos>85</puntos>
+        </unidad>
+        <unidad>
+            <nombreUnidad>Redemptor Dreadnought</nombreUnidad>
+            <tipo>Caminante de Combate</tipo>
+            <puntos>210</puntos>
+        </unidad>
+    </ejercito>
+    <ejercito faccion="Death Guard">
+        <nombre>Legión Pestilente</nombre>
+        <unidad>
+            <nombreUnidad>Plague Marines</nombreUnidad>
+            <tipo>Infantería</tipo>
+            <puntos>90</puntos>
+        </unidad>
+        <unidad>
+            <nombreUnidad>Bloat Drone</nombreUnidad>
+            <tipo>Vehículo Demonio</tipo>
+            <puntos>135</puntos>
+        </unidad>
+    </ejercito>
+</coleccion>
