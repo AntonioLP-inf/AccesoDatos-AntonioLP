@@ -1,11 +1,11 @@
-package bloque1.PracticaT3;
+
 import java.io.FileReader;
 import java.io.IOException;
 
 public class Paso1 {
     public static void main(String[] args) {
         String ruta = "no_existe.txt";
-        ruta = "./mis_datos.txt";
+        ruta = "mis_datos.txt";
         // PRUEBA 1: cambia la ruta por "no_existe.txt"
         // PRUEBA 2: deniega al fichero mis_datos.txt el permiso de lectura desde Windows
 

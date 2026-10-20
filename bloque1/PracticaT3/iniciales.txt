@@ -1,1 +1,5 @@
-ab
+Caso 1 -> catch FileNotFoundException: no_existe.txt (No such file or directory)
+Caso 2 -> catch IOException (IOException): Stream closed
+Caso 3 -> catch IOException (EOFException): 
+Caso 4 -> catch IOException (IOException): Negative seek offset
+Caso 5 -> catch IOException (IOException): Acceso denegado
