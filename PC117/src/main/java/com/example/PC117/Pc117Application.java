@@ -13,17 +13,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class Pc117Application {
-private static final String URL      = "jdbc:mysql://localhost:3306/gimnasio";
-    private static final String USUARIO  = "root";
-    private static final String PASSWORD = "contrasena";
+    private static final String URL = "jdbc:h2:mem:gimnasio";
+    private static final String USUARIO = "sa";
+    private static final String PASSWORD = "password";
 
-	public static void main(String[] args) {
-		SpringApplication.run(Pc117Application.class, args);
-		 Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) {
+        SpringApplication.run(Pc117Application.class, args);
+        Scanner sc = new Scanner(System.in);
         int opcion = -1;
 
         try (Connection con = DriverManager.getConnection(URL, USUARIO, PASSWORD);
-            Statement st = con.createStatement()) {
+                Statement st = con.createStatement()) {
             System.out.println("Conexion OK");
 
             while (opcion != 0) {
@@ -88,7 +88,7 @@ private static final String URL      = "jdbc:mysql://localhost:3306/gimnasio";
 
     // ---------------------------------------------------------------
     // 1: muestra todas las actividades con un Statement: id - nombre - dia - precio
-    //    (SELECT id_actividad, nombre, dia, precio FROM actividad).
+    // (SELECT id_actividad, nombre, dia, precio FROM actividad).
     // ---------------------------------------------------------------
     static void listarActividades(Statement st) throws SQLException {
         String sql = "SELECT a.id_actividad, a.nombre, a.dia, m.nombre AS monitor FROM actividad a JOIN monitor m ON a.id_monitor = m.id_monitor";
@@ -102,9 +102,9 @@ private static final String URL      = "jdbc:mysql://localhost:3306/gimnasio";
 
     // ---------------------------------------------------------------
     // 2: inserta el socio en la tabla socio (nombre, ciudad, email, fecha_alta)
-    //    con un PreparedStatement (3 "?") y la fecha de alta de hoy,
-    //    y muestra las filas afectadas.
-    //    Los datos ya te llegan por parametro.
+    // con un PreparedStatement (3 "?") y la fecha de alta de hoy,
+    // y muestra las filas afectadas.
+    // Los datos ya te llegan por parametro.
     // ---------------------------------------------------------------
     static void insertarSocio(Connection con, String nombre, String ciudad, String email) throws SQLException {
         String sql = "INSERT INTO socio (nombre, ciudad, email, fecha_alta) VALUES (?, ?, ?, CURDATE())";
@@ -117,10 +117,11 @@ private static final String URL      = "jdbc:mysql://localhost:3306/gimnasio";
     }
 
     // ---------------------------------------------------------------
-    // 3: cambia la ciudad del socio con ese id (UPDATE socio SET ciudad = ? WHERE id_socio = ?)
-    //    con un PreparedStatement (2 "?") y muestra las filas afectadas
-    //    (0 = ese socio no existe).
-    //    Los datos ya te llegan por parametro.
+    // 3: cambia la ciudad del socio con ese id (UPDATE socio SET ciudad = ? WHERE
+    // id_socio = ?)
+    // con un PreparedStatement (2 "?") y muestra las filas afectadas
+    // (0 = ese socio no existe).
+    // Los datos ya te llegan por parametro.
     // ---------------------------------------------------------------
     static void cambiarCiudad(Connection con, int idSocio, String ciudad) throws SQLException {
         String sql = "UPDATE socio SET ciudad = ? WHERE id_socio = ?";
@@ -133,9 +134,9 @@ private static final String URL      = "jdbc:mysql://localhost:3306/gimnasio";
 
     // ---------------------------------------------------------------
     // 4: borra todas las inscripciones del socio con ese id
-    //    (DELETE FROM inscripcion WHERE id_socio = ?)
-    //    con un PreparedStatement (1 "?") y muestra las filas afectadas
-    //    (pueden ser varias; 0 = ese socio no tiene inscripciones).
+    // (DELETE FROM inscripcion WHERE id_socio = ?)
+    // con un PreparedStatement (1 "?") y muestra las filas afectadas
+    // (pueden ser varias; 0 = ese socio no tiene inscripciones).
     // ---------------------------------------------------------------
     static void borrarInscripciones(Connection con, int idSocio) throws SQLException {
         String sql = "DELETE FROM inscripcion WHERE id_socio = ?";
@@ -143,6 +144,6 @@ private static final String URL      = "jdbc:mysql://localhost:3306/gimnasio";
             ps.setInt(1, idSocio);
             System.out.println("DELETE: " + ps.executeUpdate() + " fila(s)");
         }
-	}
+    }
 
 }
