@@ -64,3 +64,4 @@ INSERT INTO inscripcion (id_socio, id_actividad, fecha) VALUES
  (4, 4, '2026-09-12'),
  (5, 2, '2026-09-15'),
  (1, 3, '2026-09-20');
+ALTER TABLE socio ALTER COLUMN id_socio RESTART WITH 4;

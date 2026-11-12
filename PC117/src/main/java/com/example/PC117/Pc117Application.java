@@ -13,9 +13,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class Pc117Application {
-    private static final String URL = "jdbc:h2:mem:gimnasio";
-    private static final String USUARIO = "sa";
-    private static final String PASSWORD = "password";
+private static final String URL = "jdbc:h2:file:~/data/gimnasio";
+private static final String USUARIO  = "sa";
+private static final String PASSWORD = "password";
 
     public static void main(String[] args) {
         SpringApplication.run(Pc117Application.class, args);
